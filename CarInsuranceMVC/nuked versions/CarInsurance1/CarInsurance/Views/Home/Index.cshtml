@@ -1,0 +1,61 @@
+﻿<div class="row no-gutters m-3">
+    <div class="card col mx-auto shadow">
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+        {
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="form-group col">
+                        <input type="text" name="FirstName" value="" class="form-control h-100 " placeholder="First Name" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="LastName" value="" class="form-control h-100 " placeholder="Last Name" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="email" name="EmailAddress" value="" class="form-control h-100 " placeholder="Email Address" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="date" name="DateofBirth" value="" class="form-control h-100 " placeholder="Date of Birth" />
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="form-group col">
+                        <input type="text" name="CarYear" value="" class="form-control" placeholder="Car Year" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="CarMake" value="" class="form-control" placeholder="Car Make" />
+                    </div>
+                    <div class="form-group col">
+                        <input type="text" name="CarModel" value="" class="form-control" placeholder="Car Model" />
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col border p-2">
+                        <div class="row mx-auto"> Have you ever had a DUI? </div>
+                        <div class="row mx-auto">
+                            @Html.CheckBox("yesDUI");
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col border p-2">
+                        <div class="row mx-auto"> How many speeding tickets have you had? </div>
+                        <div class="row mx-auto">
+                            <input type="number" name="speedingTickets" value="" class="m-2 border" />
+                        </div>
+                    </div>
+                    <div class="col border p-2">
+                        <div class="row mx-auto"> Please check this box if you would like full coverage instead of liability only </div>
+                        <div class="row mx-auto">
+                            @Html.CheckBox("FullCoverage")
+                            Full Coverage
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters col-12 mt-5">
+                    <input type="submit" name="submit" value="Submit" class="btn btn-block btn-outline-primary mx-auto" />
+                </div>
+        }
+            <div class="card-header text-center">
+                <h5 class="m-0">Car Insurance Quote Form</h5>
+            </div>
+        </div>
+    </div>
