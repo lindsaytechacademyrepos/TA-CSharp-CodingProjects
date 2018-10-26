@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FinalCarInsuranceMVC.Models;
+using System.Diagnostics;
 
 namespace FinalCarInsuranceMVC.Controllers
 {
@@ -21,8 +22,23 @@ namespace FinalCarInsuranceMVC.Controllers
             return View(db.Insurees.ToList());
         }
 
+
         // GET: Insuree/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Insuree insuree = db.Insurees.Find(id);
+            if (insuree == null)
+            {
+                return HttpNotFound();
+            }
+            return View(insuree);
+        }
+
+        public ActionResult Admin(int? id)
         {
             if (id == null)
             {
@@ -63,11 +79,11 @@ namespace FinalCarInsuranceMVC.Controllers
             {
                 foreach (var eve in e.EntityValidationErrors)
                 {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                    Debug.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
                         eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                        Debug.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
                             ve.PropertyName, ve.ErrorMessage);
                     }
                 }
