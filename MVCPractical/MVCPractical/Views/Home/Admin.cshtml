@@ -1,0 +1,28 @@
+﻿@using MVCPractical.ViewModels
+@model List<AdminVM>
+
+<center><h1>Quotes Administrator</h1></center>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Quoted Price($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var quote in Model)
+        {
+        <tr>
+            <th scope="row">@quote.ID</th>
+            <td>@quote.FirstName</td>
+            <td>  @quote.LastName</td>
+            <td>  @quote.EmailAddress</td>
+            <td>@quote.quotedPrice</td>
+        </tr>
+        }
+    </tbody>
+</table>
